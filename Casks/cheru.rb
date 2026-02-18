@@ -13,6 +13,7 @@ cask "cheru" do
   app "Cheru.app"
 
   postflight do
+    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/Cheru.app"]
     system "open", "#{appdir}/Cheru.app"
   end
 
