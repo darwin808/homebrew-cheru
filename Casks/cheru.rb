@@ -1,5 +1,5 @@
 cask "cheru" do
-  version "0.2.5"
+  version "0.2.6"
 
   arch arm: "aarch64", intel: "x64"
 
