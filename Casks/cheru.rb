@@ -1,5 +1,5 @@
 cask "cheru" do
-  version "0.2.4"
+  version "0.2.5"
 
   arch arm: "aarch64", intel: "x64"
 
@@ -12,9 +12,19 @@ cask "cheru" do
 
   app "Cheru.app"
 
+  postflight do
+    system "open", "#{appdir}/Cheru.app"
+  end
+
+  uninstall_postflight do
+    File.delete(File.expand_path("~/Library/LaunchAgents/com.cheru.launcher.plist")) rescue nil
+  end
+
   zap trash: [
     "~/.cache/cheru",
+    "~/.config/cheru",
     "~/Library/Caches/com.cheru.launcher",
+    "~/Library/LaunchAgents/com.cheru.launcher.plist",
     "~/Library/Preferences/com.cheru.launcher.plist",
     "~/Library/Saved Application State/com.cheru.launcher.savedState",
   ]
