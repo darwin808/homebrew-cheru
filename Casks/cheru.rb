@@ -1,13 +1,10 @@
 cask "cheru" do
   version "0.2.0"
 
-  if Hardware::CPU.arm?
-    url "https://github.com/darwin808/cheru/releases/download/v#{version}/Cheru_#{version}_aarch64.dmg"
-    sha256 :no_check
-  else
-    url "https://github.com/darwin808/cheru/releases/download/v#{version}/Cheru_#{version}_x64.dmg"
-    sha256 :no_check
-  end
+  arch arm: "aarch64", intel: "x64"
+
+  url "https://github.com/darwin808/cheru/releases/download/v#{version}/Cheru_#{version}_#{arch}.dmg"
+  sha256 :no_check
 
   name "Cheru"
   desc "Desktop launcher with fuzzy search, app indexing, and file browsing"
